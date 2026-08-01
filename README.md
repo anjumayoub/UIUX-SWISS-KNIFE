@@ -8,7 +8,7 @@ A self-paced design course built as a **single, self-contained HTML app** — no
 
 ## What's inside
 
-**120 lessons across six tracks · 23 quizzes · 219 questions · ~351 hours.**
+**120 lessons across six tracks · 23 quizzes · 220 questions · ~351 hours.**
 
 | Track | Modules | Hours | Covers |
 |---|---|---|---|
