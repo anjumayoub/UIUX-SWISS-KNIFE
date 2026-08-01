@@ -1,18 +1,73 @@
-# Web Design Mastery
+# UIUX Swiss Knife
 
-An 8-week, hands-on course covering web + SaaS design. Built as a single self-contained HTML app.
+A self-paced design course built as a **single, self-contained HTML app** — no build step, no dependencies, no account. Open the file and it works, online or offline.
 
-## Live preview
+## Live
 
-**[Open the course](https://anjumayoub.github.io/web-design-course/)** - https://anjumayoub.github.io/web-design-course/
+**[Open the course →](https://anjumayoub.github.io/UIUX-SWISS-KNIFE/)**
 
 ## What's inside
 
-- 8 weeks / 42 sections: UX foundations, grids and layout, web typography, color systems, components and forms, tables and dashboards, SaaS patterns and marketing sites, responsive design, accessibility and a capstone project
-- Interactive quizzes with scoring and a final exam
-- Study timer with per-section daily history and summary
-- Sticky notes per section: rich text, images, voice recordings, export
-- Text highlighting, glossary, media viewer with zoom, light/dark theme
-- Practice exercises built around real Mobbin references
+**120 lessons across six tracks · 23 quizzes · 219 questions · ~351 hours.**
 
-Progress, notes and highlights save locally in your browser.
+| Track | Modules | Hours | Covers |
+|---|---|---|---|
+| **Web & SaaS core** | W1–W8 | ~97 h | UX foundations and the mobile→web shift · grids and spacing · web typography · colour systems · components, navigation and forms · data tables, dashboards and the five screen states · auth, onboarding, settings, billing, landing pages, e-commerce, content and portfolio sites · responsive, accessibility, handoff, capstone |
+| **Design Systems** | d1–d5 | ~73 h | Token architecture, colour and type systems, component specs, complex patterns and documentation — then the same discipline for web, iOS, Android and watch |
+| **Advanced Web Craft** | c1–c4 | ~66 h | How award-winning sites are actually scored, art direction and typographic craft · the web motion stack, scroll-driven design, page transitions · 3D fundamentals, Spline and Blender, Three.js and React Three Fiber, WebGL and shaders, performance and fallbacks · Framer, Webflow, Unicorn Studio, Rive, CMS, SEO and shipping |
+| **AI for UI/UX** | a1–a2 | ~58 h | What AI is genuinely good at and where it fails · research, synthesis, ideation, content, visual design and design-to-code · then **designing AI into products**: assist/chat/agent patterns, trust, uncertainty, cost-of-error, and how working designers actually use it |
+| **Mobile Design** | x1–x3 | ~48 h | HIG platform anatomy, navigation and modality, controls and haptics, adaptivity · Material 2→3→You, navigation, M3 components, colour roles, foldables · motion languages, micro-interactions, prototyping |
+| **Watch Design** | x4 | ~10 h | Complication families, Always-On, the Digital Crown · round-first layout, tiles, rotary input, power as a design constraint |
+
+Plus **314 spec tables, 132 real product references, 132 practice tasks, 97 curated reading lists and 57 embedded videos.**
+
+## How long it takes
+
+The web & SaaS core is a genuine 8-week course. The whole thing is not — it is roughly **351 hours**, about two thirds of it practice. Pick a route instead of the whole map:
+
+| Route | Tracks | Hours | At 8–10 hrs/wk |
+|---|---|---|---|
+| Web designer | Core | ~97 h | 2.5–3 months |
+| **Product designer** (recommended) | Core + Design Systems + AI | ~228 h | 6–7 months |
+| Cross-platform designer | Core + Mobile/Watch + Design Systems | ~227 h | 6–7 months |
+| Craft / studio designer | Core + Advanced Web Craft + AI | ~221 h | 6–7 months |
+| Full path | Everything | ~351 h | 9–11 months |
+
+"Done" is not a completion percentage. It's **three case studies and one live URL.**
+
+## Design System Kits
+
+The `Design System Kits/` folder ships working token files, not demos:
+
+| File | What it is |
+|---|---|
+| `saas-tokens.css` | The full three-tier token set — primitives, semantic roles, component tokens — with light and dark modes and a reduced-motion pass |
+| `saas-tokens.json` | The same tokens in **DTCG** format (the W3C Design Tokens spec) |
+| `saas-tokens.figma.json` | Flat `path: value` map grouped into Figma collections, for variable-import plugins |
+| `saas-tokens.tailwind.css` | Tailwind v4 `@theme` block aliasing every token |
+| `marketing-web-tokens.css` | Fluid type, section rhythm, containers and art-direction slots |
+| `ios-tokens-reference.md` | Dynamic Type, semantic colours, materials, SF Symbols configuration |
+| `android-m3-tokens-reference.md` | The M3 `ref`/`sys`/`comp` architecture with the full colour-role mapping |
+| `watch-tokens-reference.md` | watchOS and Wear OS token sheets, and the constraints that generate them |
+| `component-spec-template.md` | The 13-section spec every component gets filled in against |
+| `audit-checklist.md` | The pass/fail list to score a system against before calling it v1 |
+
+Every colour ramp is generated by solving lightness against a **fixed contrast target per step**, so step N behaves identically across every hue — swap a brand colour without re-auditing contrast. All key pairs verified between 4.8:1 and 14.1:1.
+
+## App features
+
+- Quizzes with scoring, review and a final exam
+- Study timer with per-section daily history
+- Per-section notes: rich text, images, voice recordings
+- Text highlighting and a personal glossary
+- Media lightbox with multi-step references and zoom
+- Light and dark themes
+- **Full progress export/import** as a single `.zip` — quizzes, notes, highlights, timer history and media
+
+Everything is stored locally in your browser. Nothing is uploaded anywhere.
+
+## Running it
+
+Open `index.html` in any modern browser. That's it.
+
+For the Design System Kits, open the `.css` and `.md` files in a text editor, or drop the token JSON into Figma via a variables-import plugin.
