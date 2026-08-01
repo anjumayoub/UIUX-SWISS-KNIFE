@@ -1,0 +1,89 @@
+/* ============================================================
+   UIUX Swiss Knife — Marketing / Website Token Kit v1
+   Load AFTER saas-tokens.css. This file only adds what a
+   marketing site needs and an app does not: fluid type,
+   section rhythm, wide containers and art-direction slots.
+   ============================================================ */
+
+:root {
+  /* ---------- Fluid type (clamp: min, preferred, max) ----------
+     Preferred value is tuned for a 390px -> 1440px viewport range.
+     Formula: clamp(min, calc(minREM + (max-min) * ((100vw - 390px) / 1050)), max)
+     An app uses a fixed scale; a marketing page breathes. */
+  --fluid-display-2xl: clamp(2.50rem, 1.29rem + 4.95vw, 4.50rem);  /*  40 -> 72px */
+  --fluid-display-xl:  clamp(2.25rem, 1.41rem + 3.43vw, 3.75rem);  /*  36 -> 60px */
+  --fluid-display-lg:  clamp(2.00rem, 1.46rem + 2.19vw, 3.00rem);  /*  32 -> 48px */
+  --fluid-display-md:  clamp(1.75rem, 1.42rem + 1.33vw, 2.25rem);  /*  28 -> 36px */
+  --fluid-display-sm:  clamp(1.50rem, 1.31rem + 0.76vw, 1.875rem); /*  24 -> 30px */
+  --fluid-lead:        clamp(1.125rem, 1.04rem + 0.33vw, 1.25rem); /*  18 -> 20px */
+  --fluid-body:        clamp(1.00rem, 0.96rem + 0.17vw, 1.0625rem);/*  16 -> 17px */
+
+  /* ---------- Section rhythm ----------
+     Marketing pages are read by scrolling, so vertical space
+     IS the layout. One scale, used everywhere, no exceptions. */
+  --section-pad-sm:  clamp(3rem, 2.3rem + 2.9vw, 4.5rem);   /*  48 ->  72px */
+  --section-pad-md:  clamp(4rem, 2.6rem + 5.7vw, 7rem);     /*  64 -> 112px */
+  --section-pad-lg:  clamp(5rem, 2.7rem + 9.5vw, 10rem);    /*  80 -> 160px */
+  --section-gap:     var(--space-12);   /* headline block -> content */
+  --stack-gap-tight: var(--space-3);
+  --stack-gap:       var(--space-6);
+  --stack-gap-loose: var(--space-10);
+
+  /* ---------- Containers ---------- */
+  --container-prose:  65ch;    /* long-form reading measure */
+  --container-narrow: 720px;   /* centered hero copy, CTA blocks */
+  --container-default:1200px;  /* standard section content */
+  --container-wide:   1440px;  /* feature grids, logo walls */
+  --container-full:   100%;    /* full-bleed media */
+  --gutter-mobile:    20px;
+  --gutter-desktop:   40px;
+
+  /* ---------- Marketing-only surfaces ----------
+     Alternating section tints are how a long page stays readable. */
+  --section-bg-default:  var(--bg-surface);
+  --section-bg-alt:      var(--bg-canvas);
+  --section-bg-inverse:  var(--c-neutral-1000);
+  --section-fg-inverse:  var(--c-neutral-50);
+  --section-bg-brand:    var(--c-brand-950);
+  --section-fg-brand:    var(--c-brand-50);
+
+  /* ---------- Art-direction slots ----------
+     An app component takes props. A marketing component takes
+     CONTENT — eyebrow, headline, body, media, CTA, proof.
+     These tokens define the slots so every section aligns. */
+  --media-radius:      var(--radius-xl);
+  --media-ratio-wide:  16 / 9;
+  --media-ratio-square:1 / 1;
+  --media-ratio-tall:  4 / 5;
+  --logo-wall-height:  32px;
+  --avatar-proof-size: 40px;
+
+  /* ---------- Marketing motion ----------
+     Scroll-reveal only. Never animate above the fold. */
+  --reveal-duration: 600ms;
+  --reveal-distance: 24px;
+  --reveal-stagger:  80ms;
+  --reveal-ease:     cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Section utility — every marketing section starts here */
+.section {
+  padding-block: var(--section-pad-md);
+  padding-inline: var(--gutter-mobile);
+}
+.section--sm { padding-block: var(--section-pad-sm); }
+.section--lg { padding-block: var(--section-pad-lg); }
+.section--alt { background: var(--section-bg-alt); }
+.section--inverse { background: var(--section-bg-inverse); color: var(--section-fg-inverse); }
+.section > .container { max-width: var(--container-default); margin-inline: auto; }
+.section > .container--narrow { max-width: var(--container-narrow); }
+.section > .container--wide { max-width: var(--container-wide); }
+.section > .container--prose { max-width: var(--container-prose); }
+
+@media (min-width: 768px) {
+  .section { padding-inline: var(--gutter-desktop); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --reveal-duration: 1ms; --reveal-distance: 0px; --reveal-stagger: 0ms; }
+}

@@ -1,0 +1,216 @@
+/* ============================================================
+   UIUX Swiss Knife — SaaS / Web Design System · Token Kit v1
+   Three tiers: primitive -> semantic -> component.
+   Rule: components read SEMANTIC tokens only. Never a primitive.
+   Light is :root. Dark overrides only the semantic tier.
+   ============================================================ */
+
+/* ---------- TIER 1 · PRIMITIVES (raw values, never used directly) ---------- */
+:root {
+  /* neutral */
+  --c-neutral-25: #FBFBFB; --c-neutral-50: #F5F6F6; --c-neutral-100: #EBEBEE; --c-neutral-200: #D6D8DE; --c-neutral-300: #B4BAC6; --c-neutral-400: #939CAF; --c-neutral-500: #77829C; --c-neutral-600: #616C86; --c-neutral-700: #4F586B; --c-neutral-800: #3F4552; --c-neutral-900: #30353E; --c-neutral-950: #23252C; --c-neutral-1000: #17191C;
+  /* brand */
+  --c-brand-25: #FBFBFC; --c-brand-50: #F5F5FA; --c-brand-100: #ECEAF7; --c-brand-200: #D7D5F4; --c-brand-300: #B8B3F0; --c-brand-400: #9890F0; --c-brand-500: #7B70EF; --c-brand-600: #6255EC; --c-brand-700: #4637E3; --c-brand-800: #3224C5; --c-brand-900: #291F8F; --c-brand-950: #1F1961; --c-brand-1000: #16133C;
+  /* success */
+  --c-success-25: #FAFBFB; --c-success-50: #F1F7F4; --c-success-100: #DEF0E7; --c-success-200: #AEE4C9; --c-success-300: #48D18C; --c-success-400: #24B16B; --c-success-500: #1A9557; --c-success-600: #167D49; --c-success-700: #15643C; --c-success-800: #144F31; --c-success-900: #113C26; --c-success-950: #0D2B1C; --c-success-1000: #0A1C13;
+  /* warning */
+  --c-warning-25: #FCFBF9; --c-warning-50: #F8F6F1; --c-warning-100: #F4EBDD; --c-warning-200: #EFD5B0; --c-warning-300: #EBAE5A; --c-warning-400: #DE870F; --c-warning-500: #BB7108; --c-warning-600: #9D5E07; --c-warning-700: #7D4D09; --c-warning-800: #613E0B; --c-warning-900: #492F0B; --c-warning-950: #33210A; --c-warning-1000: #221708;
+  /* danger */
+  --c-danger-25: #FCFAFB; --c-danger-50: #F9F5F5; --c-danger-100: #F6E8E9; --c-danger-200: #F2D0D2; --c-danger-300: #EDA8AB; --c-danger-400: #EB797F; --c-danger-500: #E84750; --c-danger-600: #D61B24; --c-danger-700: #AB1A22; --c-danger-800: #861B20; --c-danger-900: #65171B; --c-danger-950: #471315; --c-danger-1000: #2F0F10;
+  /* info */
+  --c-info-25: #FAFBFC; --c-info-50: #F3F6F9; --c-info-100: #E2EDF4; --c-info-200: #BDDDEF; --c-info-300: #7CC2EA; --c-info-400: #2FA5E9; --c-info-500: #1188CE; --c-info-600: #0E72AD; --c-info-700: #0F5C89; --c-info-800: #11496A; --c-info-900: #0F384F; --c-info-950: #0D2837; --c-info-1000: #0A1A24;
+  --c-white: #FFFFFF;
+  --c-black: #000000;
+
+  /* spacing — 4px base */
+  --space-0: 0px; --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px; --space-5: 20px; --space-6: 24px; --space-8: 32px; --space-10: 40px; --space-12: 48px; --space-16: 64px; --space-20: 80px; --space-24: 96px; --space-32: 128px;
+
+  /* radius */
+  --radius-none: 0px; --radius-xs: 4px; --radius-sm: 6px; --radius-md: 8px; --radius-lg: 12px; --radius-xl: 16px; --radius-2xl: 24px; --radius-full: 9999px;
+
+  /* elevation */
+  --shadow-xs: 0 1px 2px 0 rgb(16 20 28 / 0.05);
+  --shadow-sm: 0 1px 3px 0 rgb(16 20 28 / 0.10), 0 1px 2px -1px rgb(16 20 28 / 0.10);
+  --shadow-md: 0 4px 8px -2px rgb(16 20 28 / 0.10), 0 2px 4px -2px rgb(16 20 28 / 0.06);
+  --shadow-lg: 0 12px 16px -4px rgb(16 20 28 / 0.08), 0 4px 6px -2px rgb(16 20 28 / 0.03);
+  --shadow-xl: 0 20px 24px -4px rgb(16 20 28 / 0.08), 0 8px 8px -4px rgb(16 20 28 / 0.03);
+  --shadow-2xl: 0 24px 48px -12px rgb(16 20 28 / 0.18);
+  --shadow-focus: 0 0 0 4px rgb(98 85 236 / 0.24);
+
+  /* type scale — size / line-height / tracking / weight */
+  --font-size-display-2xl: 72px; --line-height-display-2xl: 90px; --tracking-display-2xl: -0.02em; --weight-display-2xl: 700; /* Marketing hero only */
+  --font-size-display-xl: 60px; --line-height-display-xl: 72px; --tracking-display-xl: -0.02em; --weight-display-xl: 700; /* Marketing hero */
+  --font-size-display-lg: 48px; --line-height-display-lg: 60px; --tracking-display-lg: -0.02em; --weight-display-lg: 700; /* Section headline */
+  --font-size-display-md: 36px; --line-height-display-md: 44px; --tracking-display-md: -0.02em; --weight-display-md: 600; /* Page title (marketing) */
+  --font-size-display-sm: 30px; --line-height-display-sm: 38px; --tracking-display-sm: 0em; --weight-display-sm: 600; /* Page title (app) */
+  --font-size-display-xs: 24px; --line-height-display-xs: 32px; --tracking-display-xs: 0em; --weight-display-xs: 600; /* Section title / modal title */
+  --font-size-text-xl: 20px; --line-height-text-xl: 30px; --tracking-text-xl: 0em; --weight-text-xl: 600; /* Card title */
+  --font-size-text-lg: 18px; --line-height-text-lg: 28px; --tracking-text-lg: 0em; --weight-text-lg: 600; /* Subsection heading */
+  --font-size-text-md: 16px; --line-height-text-md: 24px; --tracking-text-md: 0em; --weight-text-md: 400; /* Body default (marketing) */
+  --font-size-text-sm: 14px; --line-height-text-sm: 20px; --tracking-text-sm: 0em; --weight-text-sm: 400; /* Body default (app UI), table cells */
+  --font-size-text-xs: 12px; --line-height-text-xs: 18px; --tracking-text-xs: 0em; --weight-text-xs: 500; /* Labels, badges, captions, table headers */
+
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* z-index */
+  --z-base: 0; --z-docked: 10; --z-dropdown: 1000; --z-sticky: 1100; --z-banner: 1200; --z-overlay: 1300; --z-modal: 1400; --z-popover: 1500; --z-toast: 1600; --z-tooltip: 1700;
+
+  /* motion */
+  --duration-instant: 75ms; --duration-fast: 150ms; --duration-normal: 250ms; --duration-slow: 400ms; --duration-slower: 600ms; --ease-standard: cubic-bezier(0.2, 0, 0, 1); --ease-decelerate: cubic-bezier(0, 0, 0, 1); --ease-accelerate: cubic-bezier(0.3, 0, 1, 1); --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* layout */
+  --container-max: 1280px; --container-gutter: 24px; --grid-columns: 12; --grid-gutter: 24px;
+  --sidebar-width: 240px; --sidebar-width-collapsed: 64px; --topbar-height: 56px;
+}
+
+/* ---------- TIER 2 · SEMANTIC (what components actually read) ---------- */
+:root {
+  --bg-canvas: #F5F6F6; /* App background behind everything */
+  --bg-surface: #FFFFFF; /* Cards, panels, table bodies */
+  --bg-surface-raised: #FFFFFF; /* Menus, popovers, modals — one step above surface */
+  --bg-surface-sunken: #EBEBEE; /* Wells, code blocks, inset areas */
+  --bg-hover: #EBEBEE; /* Row / item hover wash */
+  --bg-active: #D6D8DE; /* Pressed or currently-selected item */
+  --bg-disabled: #EBEBEE; /* Disabled control fill */
+  --bg-brand-subtle: #ECEAF7; /* Tinted brand background (selected nav, info card) */
+  --bg-success-subtle: #DEF0E7; /* Success banner background */
+  --bg-warning-subtle: #F4EBDD; /* Warning banner background */
+  --bg-danger-subtle: #F6E8E9; /* Error banner background */
+  --text-primary: #30353E; /* Headings and body copy */
+  --text-secondary: #4F586B; /* Supporting copy, labels */
+  --text-tertiary: #616C86; /* Metadata, placeholders, captions */
+  --text-disabled: #939CAF; /* Disabled label — never carries meaning alone */
+  --text-inverse: #FFFFFF; /* Text on a filled brand/solid surface */
+  --text-brand: #4637E3; /* Links and brand-colored labels */
+  --text-success: #15643C; /* Success message text */
+  --text-warning: #7D4D09; /* Warning message text */
+  --text-danger: #AB1A22; /* Error text and destructive labels */
+  --border-subtle: #D6D8DE; /* Dividers, table row rules */
+  --border-default: #B4BAC6; /* Input and card borders at rest */
+  --border-strong: #939CAF; /* Hovered input, emphasised outline */
+  --border-focus: #6255EC; /* Focus ring color — 2px, 2px offset */
+  --border-danger: #D61B24; /* Invalid field border */
+  --action-primary-bg: #6255EC; /* Primary button rest */
+  --action-primary-bg-hover: #4637E3; /* Primary button hover */
+  --action-primary-bg-active: #3224C5; /* Primary button pressed */
+  --action-primary-fg: #FFFFFF; /* Label on primary button */
+  --action-danger-bg: #D61B24; /* Destructive button rest */
+  --action-danger-fg: #FFFFFF; /* Label on destructive button */
+  --focus-ring: #6255EC; /* Alias of border-focus for non-border use */
+
+  /* data-visualisation series — categorical, in order */
+  --viz-1: #7B70EF;
+  --viz-2: #1188CE;
+  --viz-3: #1A9557;
+  --viz-4: #BB7108;
+  --viz-5: #E84750;
+  --viz-6: #3224C5;
+}
+
+/* Dark mode: ONLY the semantic tier is re-pointed. Primitives never change. */
+[data-theme="dark"] {
+  --bg-canvas: #17191C;
+  --bg-surface: #23252C;
+  --bg-surface-raised: #30353E;
+  --bg-surface-sunken: #17191C;
+  --bg-hover: #30353E;
+  --bg-active: #3F4552;
+  --bg-disabled: #30353E;
+  --bg-brand-subtle: #1F1961;
+  --bg-success-subtle: #0D2B1C;
+  --bg-warning-subtle: #33210A;
+  --bg-danger-subtle: #471315;
+  --text-primary: #F5F6F6;
+  --text-secondary: #B4BAC6;
+  --text-tertiary: #939CAF;
+  --text-disabled: #616C86;
+  --text-inverse: #17191C;
+  --text-brand: #B8B3F0;
+  --text-success: #48D18C;
+  --text-warning: #EBAE5A;
+  --text-danger: #EDA8AB;
+  --border-subtle: #3F4552;
+  --border-default: #4F586B;
+  --border-strong: #616C86;
+  --border-focus: #9890F0;
+  --border-danger: #EB797F;
+  --action-primary-bg: #9890F0;
+  --action-primary-bg-hover: #B8B3F0;
+  --action-primary-bg-active: #D7D5F4;
+  --action-primary-fg: #17191C;
+  --action-danger-bg: #EB797F;
+  --action-danger-fg: #17191C;
+  --focus-ring: #9890F0;
+  --viz-1: #9890F0;
+  --viz-2: #2FA5E9;
+  --viz-3: #24B16B;
+  --viz-4: #DE870F;
+  --viz-5: #EB797F;
+  --viz-6: #D7D5F4;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg-canvas: #17191C;
+    --bg-surface: #23252C;
+    --bg-surface-raised: #30353E;
+    --bg-surface-sunken: #17191C;
+    --bg-hover: #30353E;
+    --bg-active: #3F4552;
+    --bg-disabled: #30353E;
+    --bg-brand-subtle: #1F1961;
+    --bg-success-subtle: #0D2B1C;
+    --bg-warning-subtle: #33210A;
+    --bg-danger-subtle: #471315;
+    --text-primary: #F5F6F6;
+    --text-secondary: #B4BAC6;
+    --text-tertiary: #939CAF;
+    --text-disabled: #616C86;
+    --text-inverse: #17191C;
+    --text-brand: #B8B3F0;
+    --text-success: #48D18C;
+    --text-warning: #EBAE5A;
+    --text-danger: #EDA8AB;
+    --border-subtle: #3F4552;
+    --border-default: #4F586B;
+    --border-strong: #616C86;
+    --border-focus: #9890F0;
+    --border-danger: #EB797F;
+    --action-primary-bg: #9890F0;
+    --action-primary-bg-hover: #B8B3F0;
+    --action-primary-bg-active: #D7D5F4;
+    --action-primary-fg: #17191C;
+    --action-danger-bg: #EB797F;
+    --action-danger-fg: #17191C;
+    --focus-ring: #9890F0;
+    --viz-1: #9890F0;
+    --viz-2: #2FA5E9;
+    --viz-3: #24B16B;
+    --viz-4: #DE870F;
+    --viz-5: #EB797F;
+    --viz-6: #D7D5F4;
+  }
+}
+
+/* ---------- TIER 3 · COMPONENT (local exceptions only) ----------
+   Add a component token only when a component needs a value the
+   semantic tier cannot express. If you find yourself adding many,
+   the semantic tier is missing a role — fix it there instead. */
+:root {
+  --button-height-sm: 32px;  --button-padding-x-sm: var(--space-3); --button-font-sm: var(--font-size-text-sm);
+  --button-height-md: 40px;  --button-padding-x-md: var(--space-4); --button-font-md: var(--font-size-text-sm);
+  --button-height-lg: 48px;  --button-padding-x-lg: var(--space-5); --button-font-lg: var(--font-size-text-md);
+  --button-radius: var(--radius-sm);
+  --input-height: 40px; --input-padding-x: var(--space-3); --input-radius: var(--radius-sm);
+  --card-padding: var(--space-6); --card-radius: var(--radius-lg);
+  --modal-width-sm: 400px; --modal-width-md: 560px; --modal-width-lg: 720px; --modal-radius: var(--radius-xl);
+  --table-row-height: 48px; --table-row-height-compact: 36px; --table-header-height: 40px;
+  --tooltip-radius: var(--radius-xs); --toast-width: 380px;
+  --focus-ring-width: 2px; --focus-ring-offset: 2px;
+}
+
+/* ---------- Reduced motion: honour the OS setting ---------- */
+@media (prefers-reduced-motion: reduce) {
+  :root { --duration-instant: 1ms; --duration-fast: 1ms; --duration-normal: 1ms; --duration-slow: 1ms; --duration-slower: 1ms; }
+}
