@@ -639,7 +639,8 @@ mark.hl.flash{animation:hlflash 1.2s ease 2}
     <a class="item" data-item="c2l2" href="#c2l2"><span class="tick">&#10003;</span><span class="it-body">2. Scroll-driven design<span class="it-meta">Core lesson &middot; 2 hrs</span></span></a>
     <a class="item" data-item="c2l3" href="#c2l3"><span class="tick">&#10003;</span><span class="it-body">3. Text, media &amp; page transitions<span class="it-meta">Core lesson &middot; 1.5 hrs</span></span></a>
     <a class="item" data-item="c2l4" href="#c2l4"><span class="tick">&#10003;</span><span class="it-body">4. Practice: build a scroll narrative<span class="it-meta">Practice &middot; 6 hrs</span></span></a>
-    <a class="item" data-item="c2q" href="#c2q"><span class="tick">&#10003;</span><span class="it-body">5. Web Motion Quiz<span class="it-meta">Quiz &middot; 8 questions</span></span></a>
+    <a class="item" data-item="c2l5" href="#c2l5"><span class="tick">&#10003;</span><span class="it-body">5. GSAP Animations<span class="it-meta">Core lesson &middot; 3 hrs</span></span></a>
+    <a class="item" data-item="c2q" href="#c2q"><span class="tick">&#10003;</span><span class="it-body">6. Web Motion Quiz<span class="it-meta">Quiz &middot; 8 questions</span></span></a>
   </details>
   <details class="week">
     <summary>3D for the Web <span class="wk-count" data-wk="c3"></span></summary>
@@ -723,7 +724,7 @@ mark.hl.flash{animation:hlflash 1.2s ease 2}
     <p><b>Figma</b> (you have it), <b>Mobbin</b> (connected — links throughout open real screens), and a browser with DevTools — you'll use <code>Cmd/Ctrl+Shift+C</code> to inspect real sites' spacing, type sizes and breakpoints constantly. Inspecting live sites is the web designer's superpower that mobile never gave you.</p>
 
     <h3>How long this actually takes</h3>
-    <div class="warn"><b>The honest number</b>This course used to say "8 weeks". That was true when it was 42 lessons. It is now <b>120 lessons across six tracks &mdash; about 351 hours</b> of study and practice. At a sustainable 8&ndash;10 hours a week, the <em>whole thing</em> is 8&ndash;10 months.<br><br>That is not a reason to be discouraged. It is a reason to <b>stop treating it as one course</b>. The web &amp; SaaS core is a real 8-week course that stands on its own. Everything after it is a track you add because you want the thing it teaches.</div>
+    <div class="warn"><b>The honest number</b>This course used to say "8 weeks". That was true when it was 42 lessons. It is now <b>121 lessons across six tracks &mdash; about 354 hours</b> of study and practice. At a sustainable 8&ndash;10 hours a week, the <em>whole thing</em> is 8&ndash;10 months.<br><br>That is not a reason to be discouraged. It is a reason to <b>stop treating it as one course</b>. The web &amp; SaaS core is a real 8-week course that stands on its own. Everything after it is a track you add because you want the thing it teaches.</div>
 
     <h3>Where the hours actually are</h3>
     <table>
@@ -6863,6 +6864,91 @@ mark.hl.flash{animation:hlflash 1.2s ease 2}
     <div class="lesson-foot"><button class="btn ghost" onclick="prev('c2l4')">&larr; Back</button><span class="spacer"></span><button class="btn" onclick="completeAndNext('c2l4')">Mark complete &amp; continue &rarr;</button></div>
   </section>
 
+  <section class="lesson" id="c2l5" data-title="GSAP Animations">
+    <div class="crumb">Craft &middot; Web Motion &middot; GSAP Animations</div>
+    <h2>GSAP Animations</h2>
+
+    <p class="lede">Every lesson in this module has pointed at one library by name. This is the dedicated deep-dive &mdash; the designer's mental model, how to brief it so it gets built correctly, enough implementation knowledge to hold your own in a build review, and a practice set to make it stick.</p>
+
+    <div class="note"><b>In plain words</b>GSAP (GreenSock Animation Platform) is a JavaScript animation engine that normalises every browser quirk and gives developers one consistent API for anything that moves &mdash; a hover, a scroll sequence, an SVG morph. In 2024 Webflow acquired GreenSock and made the entire plugin set, including ScrollTrigger, SplitText and MorphSVG, free for everyone. That single change is why GSAP is now the default rather than one option among several.</div>
+
+    <h3>The designer's mental model</h3>
+    <p>You don't need to write GSAP to brief it well. You need these six concepts &mdash; they're exactly the vocabulary a developer will use back at you.</p>
+    <table>
+      <tr><th>Concept</th><th>What it means</th><th>Think of it as</th></tr>
+      <tr><td><b>Tween</b></td><td>One property (or group of properties) animating from one value to another over a duration</td><td>A single keyframe move in After Effects</td></tr>
+      <tr><td><b>Timeline</b></td><td>A container that sequences multiple tweens, with control over what runs together vs. in order</td><td>A layer stack with its own playhead</td></tr>
+      <tr><td><b>Easing</b></td><td>The rate-of-change curve &mdash; <code>power2.out</code>, <code>back.out(1.7)</code>, <code>elastic.out</code></td><td>The same easing curves you'd pick in Principle or After Effects</td></tr>
+      <tr><td><b>Stagger</b></td><td>An automatic, incremental delay applied across a group of elements</td><td>"Animate these one after another" without hand-timing each one</td></tr>
+      <tr><td><b>ScrollTrigger</b></td><td>Ties any tween or timeline to scroll position &mdash; play, reverse, scrub, or pin</td><td>The plugin behind almost every scroll effect in lesson c2.2</td></tr>
+      <tr><td><b>Flip</b></td><td>Animates the transition between two layout states, before and after a DOM change</td><td>"First, Last, Invert, Play" &mdash; the trick behind smooth filter/sort/grid reflows</td></tr>
+    </table>
+
+    <h3>Briefing a GSAP animation so it gets built right</h3>
+    <p>Use this table for any effect you're specifying &mdash; hover, entrance, scroll sequence, whatever. It removes the single most common miscommunication: whether things happen <em>at the same time</em> or <em>one after another</em>.</p>
+    <table>
+      <tr><th>Field</th><th>Example</th></tr>
+      <tr><td>Elements</td><td>Card title, then card image, then card CTA</td></tr>
+      <tr><td>Relationship</td><td>Sequential, each starting 0.15s after the previous begins &mdash; not simultaneous</td></tr>
+      <tr><td>Properties (from &rarr; to)</td><td>opacity 0 &rarr; 1, y 24px &rarr; 0</td></tr>
+      <tr><td>Duration</td><td>0.6s per element</td></tr>
+      <tr><td>Easing</td><td><code>power2.out</code></td></tr>
+      <tr><td>Stagger</td><td>Not needed &mdash; explicit sequence above</td></tr>
+      <tr><td>Trigger</td><td>Scroll: starts when card top hits 85% of viewport</td></tr>
+      <tr><td>Repeat</td><td>Once only, does not replay on scroll-up</td></tr>
+      <tr><td>Reduced motion</td><td>Skip straight to end state, no transform, no delay</td></tr>
+    </table>
+    <div class="warn"><b>The clause that saves every handoff</b>State the relationship line above explicitly &mdash; "at the same time" vs. "one after another, 150ms apart" &mdash; every single time. GSAP's timeline defaults to sequential; most designers picture things happening together. That gap alone accounts for more rebuild requests than any other spec omission in this module.</div>
+
+    <h3>Implementation guide</h3>
+    <p>You are not expected to ship this, but knowing the shape of it means you can read a pull request, sanity-check a bug report, or prototype your own specs in CodePen.</p>
+    <table>
+      <tr><th>Step</th><th>What it looks like</th></tr>
+      <tr><td>Install</td><td><code>npm install gsap</code> &mdash; core and every plugin ship in one free package now &mdash; or a CDN <code>&lt;script&gt;</code> tag for a quick prototype. See <a href="https://gsap.com/docs/v3/Installation/" target="_blank">gsap.com/docs/v3/Installation</a> for the current version.</td></tr>
+      <tr><td>A basic tween</td><td><code>gsap.to(".card", {y:-20, duration:.6, ease:"power2.out"})</code></td></tr>
+      <tr><td>From a state</td><td><code>gsap.from(".card", {opacity:0, y:40, stagger:.08})</code></td></tr>
+      <tr><td>A timeline</td><td><code>gsap.timeline().to(a,{...}).to(b,{...},"+=.15")</code> &mdash; the position parameter is where "one after another" gets specified</td></tr>
+      <tr><td>Scroll-driven</td><td><code>ScrollTrigger.create({trigger:el, start:"top 85%", end:"bottom 20%", scrub:true, pin:true})</code></td></tr>
+      <tr><td>React cleanup</td><td><code>useGSAP(() =&gt; {...}, {scope: ref})</code> from <code>@gsap/react</code> &mdash; reverts tweens automatically on unmount, the #1 GSAP-in-React bug it prevents</td></tr>
+      <tr><td>Reduced motion</td><td><code>gsap.matchMedia().add("(prefers-reduced-motion: reduce)", () =&gt; {...})</code> &mdash; a separate, motion-free branch, not just a shorter duration</td></tr>
+    </table>
+
+    <h3>Watch this</h3>
+    <div class="video" data-yt="X7IBa7vZjmo"><img src="https://img.youtube.com/vi/X7IBa7vZjmo/hqdefault.jpg" alt="Introducing ScrollTrigger for GSAP"><div class="play"><span>&#9654;</span></div><div class="vt">Introducing ScrollTrigger &mdash; the plugin behind most of this module</div></div>
+    <div class="video" data-yt="I4WLvJLaMFE"><img src="https://img.youtube.com/vi/I4WLvJLaMFE/hqdefault.jpg" alt="The ultimate guide to scroll animation with GSAP ScrollTrigger"><div class="play"><span>&#9654;</span></div><div class="vt">The Ultimate Guide to Scroll Animation &mdash; ScrollTrigger techniques end to end</div></div>
+    <div class="vmeta">Watch the first for what ScrollTrigger unlocks conceptually, then the second for the full build &mdash; pinning, scrubbing, and debugging markers.</div>
+
+    <h3>Read this</h3>
+    <div class="reads">
+      <div class="read"><span class="rt">Docs</span><div><a href="https://gsap.com/docs/v3/" target="_blank">GSAP documentation</a><p>The canonical reference. Every method, every plugin, with runnable examples.</p></div></div>
+      <div class="read"><span class="rt">Hub</span><div><a href="https://gsap.com/resources/" target="_blank">GSAP Resources</a><p>GreenSock's own learning centre &mdash; guides, common pitfalls, and a React-specific section.</p></div></div>
+      <div class="read"><span class="rt">Article</span><div><a href="https://css-tricks.com/how-to-animate-on-the-web-with-greensock/" target="_blank">CSS-Tricks &mdash; How to Animate on the Web With GreenSock</a><p>The clearest plain-English walkthrough of tweens and timelines.</p></div></div>
+      <div class="read"><span class="rt">Article</span><div><a href="https://css-tricks.com/writing-smarter-animation-code/" target="_blank">CSS-Tricks &mdash; Writing Smarter Animation Code</a><p>How working animators structure complex sequences so they stay editable.</p></div></div>
+      <div class="read"><span class="rt">Article</span><div><a href="https://css-tricks.com/tag/gsap/" target="_blank">CSS-Tricks &mdash; GSAP archive</a><p>Dozens more practical write-ups, from SVG to canvas to game UI.</p></div></div>
+      <div class="read"><span class="rt">Course</span><div><a href="https://www.creativecodingclub.com/" target="_blank">Creative Coding Club &mdash; GSAP Express</a><p>Free, beginner-friendly video course covering the core API end to end.</p></div></div>
+      <div class="read"><span class="rt">Course</span><div><a href="https://frontendmasters.com/courses/winning-websites/" target="_blank">Frontend Masters &mdash; Build Immersive Experiences</a><p>Paid. GSAP and ScrollTrigger applied to award-style marketing sites &mdash; the closest match to this module's brief.</p></div></div>
+      <div class="read"><span class="rt">Course</span><div><a href="https://frontendmasters.com/courses/svg-essentials-animation/" target="_blank">Frontend Masters &mdash; SVG Essentials &amp; Animation, v2</a><p>Paid, by Sarah Drasner. Where GSAP meets SVG &mdash; morphing, path animation, icon systems.</p></div></div>
+      <div class="read"><span class="rt">Course</span><div><a href="https://www.udemy.com/course/animating-with-greensock/" target="_blank">Udemy &mdash; JavaScript Web Animations with GreenSock</a><p>Paid. A thorough, project-based path if you want to build fluency rather than just vocabulary.</p></div></div>
+    </div>
+
+    <h3>Practice</h3>
+    <div class="task"><span class="est">Task 1 &middot; ~45 min</span><b class="tl">The GSAP inventory</b>
+    Pick two sites from this module's earlier teardown list. For every animated moment, classify it: single tween, timeline, or ScrollTrigger-driven &mdash; and note its easing and stagger by eye. You're training yourself to see the six concepts above inside real work.</div>
+
+    <div class="task"><span class="est">Task 2 &middot; ~2 hrs</span><b class="tl">Write three briefs</b>
+    Using the briefing table above, fully specify three different effects from a page you've designed: one entrance sequence, one scroll-scrubbed effect, and one hover/stagger interaction. Every field filled &mdash; no "developer's choice" rows.</div>
+
+    <div class="task"><span class="est">Task 3 &middot; optional, ~2&ndash;3 hrs</span><b class="tl">Build one of them</b>
+    Take your strongest brief into <a href="https://codepen.io" target="_blank">CodePen</a> and implement it with real GSAP, using the implementation guide's syntax as your starting point. Compare the result to your brief &mdash; note anywhere the brief was ambiguous enough that you had to guess.</div>
+
+    <div class="task"><span class="est">Task 4 &middot; ~30 min</span><b class="tl">Reduced-motion pass</b>
+    For whichever effect you built or specced, write &#40;or add&#41; the <code>prefers-reduced-motion</code> branch explicitly, and confirm the content reads correctly with every transform removed.</div>
+
+    <div class="tip"><b>Portfolio note</b>A written brief plus one small built demo says more than a folder of screen recordings &mdash; it shows you can direct GSAP precisely enough for someone else to build it exactly as you intended.</div>
+
+    <div class="lesson-foot"><button class="btn ghost" onclick="prev('c2l5')">&larr; Back</button><span class="spacer"></span><button class="btn" onclick="completeAndNext('c2l5')">Mark complete &amp; continue &rarr;</button></div>
+  </section>
+
   <section class="lesson" id="c2q" data-title="Web Motion Quiz">
     <div class="crumb">Craft &middot; Web Motion &middot; Quiz</div>
     <h2>Web Motion Quiz</h2>
@@ -8130,7 +8216,7 @@ mark.hl.flash{animation:hlflash 1.2s ease 2}
 const ITEM_ORDER = ["w0l1","w0l2","w1l1","w1l2","w1l3","q1","w2l1","w2l2","w2l3","w2l4","q2","w3l1","w3l2","w3l3","w3l4","q3","w4l1","w4l2","w4l3","w4l4","q4","w5l1","w5l2","w5l3","w5l4","q5","w6l1","w6l2","w6l3","w6l5","q6","w7l1","w7l2","w7l3","w7l4","w7l5","q7","w8l1","w8l2","w8l3","w8l4","qf",
 "x1l1","x1l2","x1l3","x1l4","x1l5","x1l6","x1q","x2l1","x2l2","x2l3","x2l4","x2l5","x2l6","x2q","x3l1","x3l2","x3l3","x3q","x4l1","x4l2","x4l3","x4l4","x4q",
 "d1l1","d1l2","d1l3","d1l4","d1l5","d1l6","d1l7","d1q","d2l1","d2l2","d2q","d3l1","d3l2","d3l3","d3q","d4l1","d4l2","d4l3","d4q","d5l1","d5l2","d5q",
-"c1l1","c1l2","c1l3","c1l4","c1q","c2l1","c2l2","c2l3","c2l4","c2q","c3l1","c3l2","c3l3","c3l4","c3l5","c3l6","c3q","c4l1","c4l2","c4l3","c4l4","c4q",
+"c1l1","c1l2","c1l3","c1l4","c1q","c2l1","c2l2","c2l3","c2l4","c2l5","c2q","c3l1","c3l2","c3l3","c3l4","c3l5","c3l6","c3q","c4l1","c4l2","c4l3","c4l4","c4q",
 "a1l1","a1l2","a1l3","a1l4","a1l5","a1q","a2l1","a2l2","a2l3","a2l4","a2q"];
 const WEEK_OF = id => id[0]==="q" ? (id==="qf"?"w8":"w"+id.slice(1)) : id.slice(0,2);
 const store = {
