@@ -8,7 +8,7 @@ A self-paced design course built as a **single, self-contained HTML app** — no
 
 ## What's inside
 
-**122 lessons across six tracks · 23 quizzes · 220 questions · ~354 hours.**
+**121 lessons across six tracks · 23 quizzes · 220 questions · ~354 hours.**
 
 The sidebar and the in-app "Your path, step by step" guide are ordered exactly like this table — each track is built to assume the ones above it:
 
@@ -21,7 +21,7 @@ The sidebar and the in-app "Your path, step by step" guide are ordered exactly l
 | 5 | **Advanced Web Craft** | c1–c4 | ~69 h | How award-winning sites are actually scored, art direction and typographic craft · the web motion stack, scroll-driven design, page transitions, GSAP animations · 3D fundamentals, Spline and Blender, Three.js and React Three Fiber, WebGL and shaders, performance and fallbacks · Framer, Webflow, Unicorn Studio, Rive, CMS, SEO and shipping |
 | 6 | **AI for UI/UX** | a1–a2 | ~58 h | What AI is genuinely good at and where it fails · research, synthesis, ideation, content, visual design and design-to-code · then **designing AI into products**: assist/chat/agent patterns, trust, uncertainty, cost-of-error, and how working designers actually use it |
 
-Plus **317 spec tables, 132 real product references, 136 practice tasks, 104 curated reading lists and 59 embedded videos.** A dedicated **Full Resource Index** (0.3 in the sidebar) compiles all 336 references and 59 videos into one page, grouped by track in this same order, beginner to advanced.
+Plus **317 spec tables, 132 real product references, 136 practice tasks, 104 curated reading lists and 59 embedded videos.** A dedicated **Full Resource Index** — its own icon next to Glossary, not a lesson in the sequence — compiles all 336 references and 59 videos into one searchable, collapsible page grouped by track, beginner to advanced.
 
 ## How long it takes
 
